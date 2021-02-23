@@ -1,0 +1,268 @@
+import numpy as np
+
+#t0 = time.time()
+for i in range(1):
+    FACTOR(87)
+#print(time.time()-t0)
+#FACTOR(165)
+
+print(T0,T1,T2,T3,T0+T1+T2+T3)
+#print(Simulator1c('project1/input.circuit'))
+#print(TestTime('2',19))
+
+
+
+'''
+nwa = [5,6,7,8,9,10,11]
+nwb = [5,6,7,8,9,10,11]
+nwc = [5,6,7,8,9,10,11,12,20]
+nw2 = [5,6,7,8,9,10,11,12,20]
+vala = []
+valb = []
+valc = []
+val2 = []
+for elem in nwa:
+    vala.append(TestTime('1a',elem))
+print('bstart')
+for elem in nwb:
+    valb.append(TestTime('1b',elem))
+print('cstart')
+for elem in nwc:
+    valc.append(TestTime('1c',elem))
+print('2start')
+for elem in nwc:
+    val2.append(TestTime('2',elem))
+
+plt.figure()
+plt.xlabel('qubits')
+plt.ylabel('Time s')
+plt.plot(nwa,vala,label='Simulator 1a')
+plt.plot(nwb,valb,label='Simulator 1b')
+plt.plot(nwc,valc,label='Simulator 1c')
+plt.plot(nw2,val2,label='Simulator 2')
+plt.legend()
+plt.show()
+'''
+#AddInvQFT('project1/QFT',5)
+#print(Simulator1b('project1/input.circuit'))
+#print(Simulator1c('project1/input.circuit'))
+#print(Simulator2('project1/rand.circuit'))
+#print(Simulator2('project1/QFT_qft.circuit',1))
+#PEst('project1/pest03_qft','|0000001>',100,6,1,10)
+#PEstHistogram('project1/pest02_2_qft','|0001>',200,6,1,0.3)
+#PEstHistogram('project1/pest03_sup','|sup>',200,6,1,0.5)
+#PEstHistogram('project1/friends_qft','|0000001>',200,6,1,0.9)
+#for i in range(200):
+#    print(i,FACTOR(i))
+#print(FACTOR(165))
+#Histogram(p,500)
+#d2 = Simulator2('project1/funcs.circuit',1)
+#print(xNUnitary(3,10))
+#print(d2)
+#vec = StateToVec([[1,'0100010']])
+#print(VecToState(np.kron(np.kron(np.kron(xNUnitary(3,10),np.identity(2)),np.identity(2)),np.identity(2))@vec))
+#Histogram(d2[1],500)
+'''
+kl = np.linspace(3,31,29)
+i = 0
+j = 0
+while i < 90 and j < 28:
+    j += 1
+    k = int(kl[j])
+    v = factor(k)
+    if v == 'easy':
+        pass
+    else:
+        print(k,v)
+        i += 1
+'''
+#simulator 1 newest tests
+
+'''
+N=3
+da = Simulator1a(f"project1/generatedtest/tempstate_{N}.txt",f"project1/generatedtest/tempcircuit_{N}.circuit")
+db = Simulator1b(f"project1/generatedtest/tempstate_{N}.txt",f"project1/generatedtest/tempcircuit_{N}.circuit")
+dc = Simulator1c(f"project1/generatedtest/tempstate_{N}.txt",f"project1/generatedtest/tempcircuit_{N}.circuit")
+PrettyPrintBinary(da[0][:2],1)
+PrettyPrintBinary(db[0][:2],1)
+PrettyPrintBinary(dc[0][:2],1)
+
+N = 11
+print(TestTime('1a',N))
+print(TestTime('1b',N))
+print(TestTime('1c',N))
+'''
+
+
+'''
+normals = np.random.normal(10,2,500)
+fig = plt.figure(figsize=(5, 5))  # initialize figure
+fig.savefig('out.png')            # save png image
+ax = fig.add_subplot(1,1,1)
+n, bins, patch = ax.hist(normals, 50)
+#plt.show()
+'''
+#2/8, 8:04 pm
+
+
+
+
+
+
+
+
+'''
+for i in range(10):
+    k = np.random.randint(0,1000000000)
+    l = IntToBinary(k)
+    m = BinaryToInt(l)
+    print(f"{k},{l},{m},{k==m}")
+print(BinaryToInt('11'))'''
+
+myState=[(np.sqrt(0.1), '00'),(np.sqrt(0.4), '01') , (-np.sqrt(0.5), '11' )]
+
+myState2=[ (np.sqrt(0.1)*1.j, '101'), (np.sqrt(0.5), '000') , (-np.sqrt(0.4), '010' ) ]
+PrettyPrintBinary(myState)
+PrettyPrintInteger(myState)
+
+print(StateToVec(myState2))
+print(VecToState(StateToVec(myState2)))
+print(myState2)
+
+PrettyPrintBinary(myState2)
+PrettyPrintInteger(myState2)
+
+print(StateToVec(myState2))
+print(VecToState(StateToVec(myState2)))
+print(myState2)
+
+
+'''
+data0 = Simulate1a("project1/myInputState.txt","project1/input.circuit")
+PrettyPrintBinary(data0[0],1)
+PrettyPrintInteger(data0[0],1)
+State1aout = data0[0]
+Probs = data0[1]
+if data0[1] == 'Null':
+    Probs = MeasureState(State1aout)
+p = 0
+for bp in Probs:
+    p += bp[1]
+print(p)
+
+
+
+myVec = ReadVec('project1/myInputState.txt')
+print(VecToState(myVec))
+print(myVec==StateToVec(VecToState(myVec)))
+
+#print(UnitaryMatrix(nWires,myInput))
+Vec2Out= np.dot(UnitaryFromFile("project1/input.txt")[0],(StateToVec(myState2)))
+myState2Out = VecToState(Vec2Out)
+#print((StateToVec(myState2)))
+print(Vec2Out)
+print(myState2Out[0][0])
+print(Measure(myState2Out))
+
+
+#print ReadCircuit('project1/measure.circuit'))
+'''
+
+PrettyPrintInteger(VecToState(ReadVec('project1/smallstate.txt')))
+
+
+tempstate = QubitGenerator(5)
+p = 0
+for i in tempstate:
+    p += ((i[0])**2+(i[1])**2)
+print(p)
+
+#print(np.random.normal(0,2,100))
+
+'''
+# time the function
+time0 = time.time()
+dataa = Simulator1a("project1/myInputState.txt","project1/measure.circuit")
+time1 = time.time()
+datab = Simulator1b("project1/myInputState.txt","project1/measure.circuit")
+time2 = time.time()
+datac = Simulator1c("project1/myInputState.txt","project1/measure.circuit")
+time3 = time.time()
+print(f'time used for simulator a: {time1-time0}')
+print(f'time used for simulator b: {time2-time1}')
+print(f'time used for simulator c: {time3-time2}')
+'''
+
+
+myState3 = VecToState(StateToVec([(np.sqrt(0.9),'0'),(np.sqrt(0.1),'1')]))
+myState5 = VecToState(((np.sqrt(0.2)),(np.sqrt(0.3)),(np.sqrt(0.5)),0,0,0,0,0))
+#print(myState5)
+
+d2 = Simulator2(f"project1/gates2.txt",0)
+print(d2)
+
+
+##PEstHistogram('project1/shors_3_10_qft','|000000001>',100,5,4,0.9)
+#PEst('project1/shors_3_10_qft','|000000001>',100,5,4,10)
+
+'''
+mat = xNUnitary(3,7)
+d2 = Simulator2('project1/shors_2_15_qft_tp1.circuit',1)
+#print(d2[1])
+state9 = d2[0]
+print(state9)
+vector9 = StateToVec(state9)
+print(mat)
+#Unitary = np.kron(np.kron(np.kron(np.kron(np.kron(mat,np.identity(2)),np.identity(2)),np.identity(2)),np.identity(2)),np.identity(2))
+#Unitary = np.kron(mat,np.identity(2))
+Unitary = mat
+result = VecToState(Unitary @ vector9)
+print(result)
+d2_2 = Simulator2('project1/shors_2_15_qft_tp2.circuit',1)
+result2 = d2_2[0]
+print(result2)
+'''
+
+#print(INVQFT(4))
+#AddInvQFT('project1/pest03',6)
+#d2 = Simulator2(f"project1/pest03_qft_tp.circuit",1)
+#d2 = Simulator2(f"project1/gates2.txt",1)
+#print(d2[1:])
+
+#PEst('project1/pest02','|001>',100,2,1)
+#PEst('project1/pest03_qft','|0000001>',1024,6,1,40)
+#PEstHistogram('project1/pest02','|001>',100,3,1,0.9)
+#PEstHistogram('project1/pest02_2','|0001>',1000,3,1,0.3)
+#PEstHistogram('project1/pest03_qft','|0000001>',200,6,1,0.9)
+
+#d2 = Simulator2(f"project1/pest02_2_tp.circuit",1)
+#print(d2[1])
+
+#d2 = Simulator2(f"project1/pest02_tp.circuit",1)
+#print(d2[1])
+
+'''
+#this is phi=0.5 thing
+d2 = Simulator2(f"project1/pest03_sup2.circuit",1)
+#print(d2[1])
+pbs = []
+for elem in d2[1]:
+    if elem[0][-1] == '1':
+        pbs.append(elem[1])
+#print(pbs)
+
+plt.figure()
+plt.plot(np.linspace(0,2*np.pi*(1-1/len(pbs)),len(pbs)),pbs)
+plt.savefig(f'project1/files/6 wire superposition.png')
+plt.show()
+'''
+
+#d1c = Simulator1c('project1/measure.circuit')
+#print(d1c)
+
+
+
+
+
+
+

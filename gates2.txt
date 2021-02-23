@@ -1,0 +1,4 @@
+2
+INITSTATE FILE project1/basis2.txt
+CPHASE 0 1 1
+MEASURE
