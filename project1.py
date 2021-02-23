@@ -43,7 +43,7 @@ def checkeasy(N):
 def xN_gcd(N):
     x = randint(2,np.sqrt(N)+1)
     ntry = 0
-    while gcd(x,N) != 1 and ntry < 30:
+    while gcd(x,N) != 1 and ntry < 100:
         x = randint(2,np.sqrt(N)+1)
         ntry += 1
     #if ntry == 30:
@@ -52,36 +52,36 @@ def xN_gcd(N):
 def xr1modN(x,N):
     r = 1
     ntry = 0
-    while ((x**r)%N) != (1 % N) and ntry < 30:
+    while ((x**r)%N) != (1 % N) and ntry < 100:
         r += 1
         ntry += 1
     #if ntry == 30:
     #    print(f'failb{N}')
     return r
-def factor(N):
+def factor(N): #this one has been modified to accept "Easy numbers" for a part of question
     if checkeasy(N)[0] == 2:
         return 'easy'
     else:
         ans = []
         passed = 0
         ntry = 0
-        while passed == 0 and ntry < 30:
+        while passed == 0 and ntry < 100:
             r = 1
-            while (r % 2) != 0 and ntry < 30:
+            while (r % 2) != 0 and ntry < 100:
                 x = xN_gcd(N)
                 r = xr1modN(x,N)
                 ntry += 1
             sol = [gcd(int((x**int(r/2)-1)%N),N),gcd(int((x**int(r/2)+1)%N),N)]
             for elem in sol:
-                if elem != 1 and elem != N and ntry<30:
+                if elem != 1 and elem != N and ntry<100:
                     passed = 1
                     if elem not in ans:
                         ans.append(elem)
-        if ntry == 30 and passed == 0:
+        if ntry == 100 and passed == 0:
             print(f'failc{N}')
         if (1 not in getsol(x,r,N)) and (N not in getsol(x,r,N)):
             return ans,x,r
-        else:return(f'failed{N}')
+        else:return(f'failed{N}',ans,x,r,getsol(x,r,N))
 def factorv2(N):
     if checkeasy(N)[0] == 1:
         return 'easy'
