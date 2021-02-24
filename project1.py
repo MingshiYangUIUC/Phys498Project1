@@ -58,8 +58,8 @@ def xr1modN(x,N):
     #if ntry == 30:
     #    print(f'failb{N}')
     return r
-def factor(N): #this one has been modified to accept "Easy numbers" for a part of question
-    if checkeasy(N)[0] == 2:
+def factor(N): #this one has been modified to output x and r beside result
+    if checkeasy(N)[0] == 1:
         return 'easy'
     else:
         ans = []
@@ -1045,6 +1045,11 @@ myState2=[ (np.sqrt(0.1)*1.j, '101'), (np.sqrt(0.5), '000') , (-np.sqrt(0.4), '0
 
 print('---Start Run---')
 #put commands here
-print(FACTOR(21))
+#print(FACTOR(21))
+
+
+#AddInvQFT('project1/QFT',3)
+d2 = Simulator2('project1/QFT_qft.circuit',2)
+print(d2[0])
 
 print('---End Run---')
